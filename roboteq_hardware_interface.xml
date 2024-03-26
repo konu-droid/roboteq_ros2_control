@@ -1,0 +1,9 @@
+<library path="roboteq_hardware_interface">
+  <class name="roboteq_hardware_interface/DiffBotSystemHardware"
+         type="roboteq_hardware_interface::DiffBotSystemHardware"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      The ros2_control DiffBot example using a system hardware interface-type. It uses velocity command and position state interface.
+    </description>
+  </class>
+</library>
