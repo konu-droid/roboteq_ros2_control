@@ -19,38 +19,38 @@
  * library cannot have, but the consuming code must have inorder to link.
  */
 
-#ifndef ROBOTEQ_HARDWARE_INTERFACE__VISIBILITY_CONTROL_H_
-#define ROBOTEQ_HARDWARE_INTERFACE__VISIBILITY_CONTROL_H_
+#ifndef ROBOTEQ_ROS2_CONTROL__VISIBILITY_CONTROL_H_
+#define ROBOTEQ_ROS2_CONTROL__VISIBILITY_CONTROL_H_
 
 // This logic was borrowed (then namespaced) from the examples on the gcc wiki:
 //     https://gcc.gnu.org/wiki/Visibility
 
 #if defined _WIN32 || defined __CYGWIN__
 #ifdef __GNUC__
-#define ROBOTEQ_HARDWARE_INTERFACE_EXPORT __attribute__((dllexport))
-#define ROBOTEQ_HARDWARE_INTERFACE_IMPORT __attribute__((dllimport))
+#define ROBOTEQ_ROS2_CONTROL_EXPORT __attribute__((dllexport))
+#define ROBOTEQ_ROS2_CONTROL_IMPORT __attribute__((dllimport))
 #else
-#define ROBOTEQ_HARDWARE_INTERFACE_EXPORT __declspec(dllexport)
-#define ROBOTEQ_HARDWARE_INTERFACE_IMPORT __declspec(dllimport)
+#define ROBOTEQ_ROS2_CONTROL_EXPORT __declspec(dllexport)
+#define ROBOTEQ_ROS2_CONTROL_IMPORT __declspec(dllimport)
 #endif
-#ifdef ROBOTEQ_HARDWARE_INTERFACE_BUILDING_DLL
-#define ROBOTEQ_HARDWARE_INTERFACE_PUBLIC ROBOTEQ_HARDWARE_INTERFACE_EXPORT
+#ifdef ROBOTEQ_ROS2_CONTROL_BUILDING_DLL
+#define ROBOTEQ_ROS2_CONTROL_PUBLIC ROBOTEQ_ROS2_CONTROL_EXPORT
 #else
-#define ROBOTEQ_HARDWARE_INTERFACE_PUBLIC ROBOTEQ_HARDWARE_INTERFACE_IMPORT
+#define ROBOTEQ_ROS2_CONTROL_PUBLIC ROBOTEQ_ROS2_CONTROL_IMPORT
 #endif
-#define ROBOTEQ_HARDWARE_INTERFACE_PUBLIC_TYPE ROBOTEQ_HARDWARE_INTERFACE_PUBLIC
-#define ROBOTEQ_HARDWARE_INTERFACE_LOCAL
+#define ROBOTEQ_ROS2_CONTROL_PUBLIC_TYPE ROBOTEQ_ROS2_CONTROL_PUBLIC
+#define ROBOTEQ_ROS2_CONTROL_LOCAL
 #else
-#define ROBOTEQ_HARDWARE_INTERFACE_EXPORT __attribute__((visibility("default")))
-#define ROBOTEQ_HARDWARE_INTERFACE_IMPORT
+#define ROBOTEQ_ROS2_CONTROL_EXPORT __attribute__((visibility("default")))
+#define ROBOTEQ_ROS2_CONTROL_IMPORT
 #if __GNUC__ >= 4
-#define ROBOTEQ_HARDWARE_INTERFACE_PUBLIC __attribute__((visibility("default")))
-#define ROBOTEQ_HARDWARE_INTERFACE_LOCAL __attribute__((visibility("hidden")))
+#define ROBOTEQ_ROS2_CONTROL_PUBLIC __attribute__((visibility("default")))
+#define ROBOTEQ_ROS2_CONTROL_LOCAL __attribute__((visibility("hidden")))
 #else
-#define ROBOTEQ_HARDWARE_INTERFACE_PUBLIC
-#define ROBOTEQ_HARDWARE_INTERFACE_LOCAL
+#define ROBOTEQ_ROS2_CONTROL_PUBLIC
+#define ROBOTEQ_ROS2_CONTROL_LOCAL
 #endif
-#define ROBOTEQ_HARDWARE_INTERFACE_PUBLIC_TYPE
+#define ROBOTEQ_ROS2_CONTROL_PUBLIC_TYPE
 #endif
 
-#endif  // ROBOTEQ_HARDWARE_INTERFACE__VISIBILITY_CONTROL_H_
+#endif  // ROBOTEQ_ROS2_CONTROL__VISIBILITY_CONTROL_H_

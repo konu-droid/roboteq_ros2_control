@@ -5,7 +5,7 @@
 
     <ros2_control name="${name}" type="system">
       <hardware>
-        <plugin>roboteq_hardware_interface/DiffBotSystemHardware</plugin>
+        <plugin>roboteq_ros2_control/DiffBotSystemHardware</plugin>
         <param name="loop_rate">20</param>
         <param name="device">/dev/ttyACM0</param>
         <param name="baud_rate">115200</param>

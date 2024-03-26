@@ -132,14 +132,14 @@ public:
         std::string response = send_msg(ss.str());
 
         int left_rpm_ = 0;
-        int left_rpm_ = 0;
+        int right_rpm_ = 0;
 
         if (!response.empty())
         {
-            sscanf(response.c_str(), "CB=%d:%d\r", &left_rpm_, &left_rpm_);
+            sscanf(response.c_str(), "CB=%d:%d\r", &left_rpm_, &right_rpm_);
             left_encoder_feedback = double(left_rpm_);
             right_encoder_feedback = double(right_rpm_);
-            std::printf("HALL DUAL %d %d \n", left_encoder_feedback, right_encoder_feedback);
+            std::printf("HALL DUAL %f %f \n", left_encoder_feedback, right_encoder_feedback);
             return true;
         }
         else

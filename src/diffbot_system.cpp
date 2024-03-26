@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "roboteq_hardware_interface/diffbot_system.hpp"
+#include "roboteq_ros2_control/diffbot_system.hpp"
 
 #include <chrono>
 #include <cmath>
@@ -25,7 +25,7 @@
 #include "hardware_interface/types/hardware_interface_type_values.hpp"
 #include "rclcpp/rclcpp.hpp"
 
-namespace roboteq_hardware_interface
+namespace roboteq_ros2_control
 {
   hardware_interface::CallbackReturn DiffBotSystemHardware::on_init(
       const hardware_interface::HardwareInfo &info)
@@ -199,7 +199,7 @@ namespace roboteq_hardware_interface
     return success ? hardware_interface::return_type::OK : hardware_interface::return_type::ERROR;
   }
 
-  hardware_interface::return_type roboteq_hardware_interface ::DiffBotSystemHardware::write(
+  hardware_interface::return_type roboteq_ros2_control ::DiffBotSystemHardware::write(
       const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/)
   {
     // RCLCPP_INFO(rclcpp::get_logger("DiffBotSystemHardware"), "Writing...");
@@ -222,8 +222,8 @@ namespace roboteq_hardware_interface
     return hardware_interface::return_type::OK;
   }
 
-} // namespace roboteq_hardware_interface
+} // namespace roboteq_ros2_control
 
 #include "pluginlib/class_list_macros.hpp"
 PLUGINLIB_EXPORT_CLASS(
-    roboteq_hardware_interface::DiffBotSystemHardware, hardware_interface::SystemInterface)
+    roboteq_ros2_control::DiffBotSystemHardware, hardware_interface::SystemInterface)

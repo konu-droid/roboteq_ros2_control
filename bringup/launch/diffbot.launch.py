@@ -32,7 +32,7 @@ def generate_launch_description():
             PathJoinSubstitution([FindExecutable(name="xacro")]),
             " ",
             PathJoinSubstitution(
-                [FindPackageShare("roboteq_hardware_interface"), "urdf", "diffbot.urdf.xacro"]
+                [FindPackageShare("roboteq_ros2_control"), "urdf", "diffbot.urdf.xacro"]
             ),
             " ",
         ]
@@ -41,7 +41,7 @@ def generate_launch_description():
 
     robot_controllers = PathJoinSubstitution(
         [
-            FindPackageShare("roboteq_hardware_interface"),
+            FindPackageShare("roboteq_ros2_control"),
             "config",
             "diffbot_controllers.yaml",
         ]

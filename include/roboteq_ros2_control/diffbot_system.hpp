@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef ROBOTEQ_HARDWARE_INTERFACE__DIFFBOT_SYSTEM_HPP_
-#define ROBOTEQ_HARDWARE_INTERFACE__DIFFBOT_SYSTEM_HPP_
+#ifndef ROBOTEQ_ROS2_CONTROL__DIFFBOT_SYSTEM_HPP_
+#define ROBOTEQ_ROS2_CONTROL__DIFFBOT_SYSTEM_HPP_
 
 #include <memory>
 #include <string>
@@ -30,10 +30,10 @@
 #include "rclcpp_lifecycle/node_interfaces/lifecycle_node_interface.hpp"
 #include "rclcpp_lifecycle/state.hpp"
 
-#include "roboteq_hardware_interface/visibility_control.h"
-#include "roboteq_hardware_interface/roboteq_comms.hpp"
+#include "roboteq_ros2_control/visibility_control.h"
+#include "roboteq_ros2_control/roboteq_comms.hpp"
 
-namespace roboteq_hardware_interface
+namespace roboteq_ros2_control
 {
   class DiffBotSystemHardware : public hardware_interface::SystemInterface
   {
@@ -48,37 +48,37 @@ namespace roboteq_hardware_interface
 
     RCLCPP_SHARED_PTR_DEFINITIONS(DiffBotSystemHardware)
 
-    ROBOTEQ_HARDWARE_INTERFACE_PUBLIC
+    ROBOTEQ_ROS2_CONTROL_PUBLIC
     hardware_interface::CallbackReturn on_init(
         const hardware_interface::HardwareInfo &info) override;
 
-    ROBOTEQ_HARDWARE_INTERFACE_PUBLIC
+    ROBOTEQ_ROS2_CONTROL_PUBLIC
     std::vector<hardware_interface::StateInterface> export_state_interfaces() override;
 
-    ROBOTEQ_HARDWARE_INTERFACE_PUBLIC
+    ROBOTEQ_ROS2_CONTROL_PUBLIC
     std::vector<hardware_interface::CommandInterface> export_command_interfaces() override;
 
-    ROBOTEQ_HARDWARE_INTERFACE_PUBLIC
+    ROBOTEQ_ROS2_CONTROL_PUBLIC
     hardware_interface::CallbackReturn on_configure(
         const rclcpp_lifecycle::State &previous_state) override;
 
-    ROBOTEQ_HARDWARE_INTERFACE_PUBLIC
+    ROBOTEQ_ROS2_CONTROL_PUBLIC
     hardware_interface::CallbackReturn on_cleanup(
         const rclcpp_lifecycle::State &previous_state) override;
 
-    ROBOTEQ_HARDWARE_INTERFACE_PUBLIC
+    ROBOTEQ_ROS2_CONTROL_PUBLIC
     hardware_interface::CallbackReturn on_activate(
         const rclcpp_lifecycle::State &previous_state) override;
 
-    ROBOTEQ_HARDWARE_INTERFACE_PUBLIC
+    ROBOTEQ_ROS2_CONTROL_PUBLIC
     hardware_interface::CallbackReturn on_deactivate(
         const rclcpp_lifecycle::State &previous_state) override;
 
-    ROBOTEQ_HARDWARE_INTERFACE_PUBLIC
+    ROBOTEQ_ROS2_CONTROL_PUBLIC
     hardware_interface::return_type read(
         const rclcpp::Time &time, const rclcpp::Duration &period) override;
 
-    ROBOTEQ_HARDWARE_INTERFACE_PUBLIC
+    ROBOTEQ_ROS2_CONTROL_PUBLIC
     hardware_interface::return_type write(
         const rclcpp::Time &time, const rclcpp::Duration &period) override;
 
@@ -102,6 +102,6 @@ namespace roboteq_hardware_interface
     double right_encoder_rpm_;
   };
 
-} // namespace roboteq_hardware_interface
+} // namespace roboteq_ros2_control
 
-#endif // ROBOTEQ_HARDWARE_INTERFACE__DIFFBOT_SYSTEM_HPP_
+#endif // ROBOTEQ_ROS2_CONTROL__DIFFBOT_SYSTEM_HPP_
