@@ -126,7 +126,7 @@ namespace roboteq_ros2_control
       const rclcpp_lifecycle::State & /*previous_state*/)
   {
     RCLCPP_INFO(rclcpp::get_logger("DiffBotSystemHardware"), "Configuring ...please wait...");
-    bool success = true; //comm_.ConnectComm(cfg_.device, cfg_.baud_rate, cfg_.timeout_ms);
+    bool success = comm_.ConnectComm(cfg_.device, cfg_.baud_rate, cfg_.timeout_ms);
     
     if (success)
       RCLCPP_INFO(rclcpp::get_logger("DiffBotSystemHardware"), "Successfully configured!");
@@ -138,7 +138,7 @@ namespace roboteq_ros2_control
       const rclcpp_lifecycle::State & /*previous_state*/)
   {
     RCLCPP_INFO(rclcpp::get_logger("DiffBotSystemHardware"), "Cleaning up ...please wait...");
-    //comm_.DisconnectComm();
+    comm_.DisconnectComm();
     RCLCPP_INFO(rclcpp::get_logger("DiffBotSystemHardware"), "Successfully cleaned up!");
 
     return hardware_interface::CallbackReturn::SUCCESS;
@@ -175,26 +175,26 @@ namespace roboteq_ros2_control
   hardware_interface::return_type DiffBotSystemHardware::read(
       const rclcpp::Time & /*time*/, const rclcpp::Duration &period)
   {
-    // if (!comm_.connected())
-    // {
-    //   return hardware_interface::return_type::ERROR;
-    // }
+    if (!comm_.connected())
+    {
+      return hardware_interface::return_type::ERROR;
+    }
 
     // get rpm from motor
-    bool success = true; //comm_.ReadRPM(left_encoder_rpm_, right_encoder_rpm_);
+    bool success = comm_.ReadRPM(left_encoder_rpm_, right_encoder_rpm_);
 
     // calc
     left_hw_positions_ = left_hw_positions_ + period.seconds() * left_encoder_rpm_;
     right_hw_positions_ = right_hw_positions_ + period.seconds() * right_encoder_rpm_;
 
-    RCLCPP_INFO(
-        rclcpp::get_logger("DiffBotSystemHardware"),
-        "Got position state %.5f and velocity state %.5f for '%s'!", left_hw_positions_,
-        left_encoder_rpm_, info_.joints[0].name.c_str());
-    RCLCPP_INFO(
-        rclcpp::get_logger("DiffBotSystemHardware"),
-        "Got position state %.5f and velocity state %.5f for '%s'!", right_hw_positions_,
-        right_encoder_rpm_, info_.joints[0].name.c_str());
+    // RCLCPP_INFO(
+    //     rclcpp::get_logger("DiffBotSystemHardware"),
+    //     "Got position state %.5f and velocity state %.5f for '%s'!", left_hw_positions_,
+    //     left_encoder_rpm_, info_.joints[0].name.c_str());
+    // RCLCPP_INFO(
+    //     rclcpp::get_logger("DiffBotSystemHardware"),
+    //     "Got position state %.5f and velocity state %.5f for '%s'!", right_hw_positions_,
+    //     right_encoder_rpm_, info_.joints[0].name.c_str());
 
     return success ? hardware_interface::return_type::OK : hardware_interface::return_type::ERROR;
   }
@@ -203,19 +203,19 @@ namespace roboteq_ros2_control
       const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/)
   {
     // RCLCPP_INFO(rclcpp::get_logger("DiffBotSystemHardware"), "Writing...");
-    // if (!comm_.connected())
-    // {
-    //   return hardware_interface::return_type::ERROR;
-    // }
+    if (!comm_.connected())
+    {
+      return hardware_interface::return_type::ERROR;
+    }
 
-    // comm_.DriveCommand(left_wheel_cmd_rpm_, right_wheel_cmd_rpm_);
+    comm_.DriveCommand(left_wheel_cmd_rpm_, right_wheel_cmd_rpm_);
 
-    RCLCPP_INFO(
-        rclcpp::get_logger("DiffBotSystemHardware"), "Got command %.5f for '%s'!", left_wheel_cmd_rpm_,
-        info_.joints[0].name.c_str());
-    RCLCPP_INFO(
-        rclcpp::get_logger("DiffBotSystemHardware"), "Got command %.5f for '%s'!", right_wheel_cmd_rpm_,
-        info_.joints[1].name.c_str());
+    // RCLCPP_INFO(
+    //     rclcpp::get_logger("DiffBotSystemHardware"), "Got command %.5f for '%s'!", left_wheel_cmd_rpm_,
+    //     info_.joints[0].name.c_str());
+    // RCLCPP_INFO(
+    //     rclcpp::get_logger("DiffBotSystemHardware"), "Got command %.5f for '%s'!", right_wheel_cmd_rpm_,
+    //     info_.joints[1].name.c_str());
 
     // RCLCPP_INFO(rclcpp::get_logger("DiffBotSystemHardware"), "Joints successfully written!");
 
