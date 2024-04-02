@@ -2,7 +2,9 @@
 
 A ros2_control package to use roboteq motor controllers for differential drive robots.
 
-*Note: Current the motor velocity is calculated by querying wheel encoder RPM directly from the motor drivers and feed into diff_drive_controller from ros2_control.*
+Current the motor velocity is calculated by querying wheel encoder RPM directly from the motor drivers and feed into diff_drive_controller from ros2_control.
+
+<br>
 
 **Subscribers**  
 ~/cmd_vel [geometry_msgs/msg/TwistStamped]  
